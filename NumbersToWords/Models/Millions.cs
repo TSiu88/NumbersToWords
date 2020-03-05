@@ -4,10 +4,7 @@ namespace NumbersToWords.Models
   {
     public Millions(string number) : base(number)
     {
-    }
-    public string getInstance(string number)
-    {
-      return number;
+      NumberOfPlaces = 6;
     }
   }
 }

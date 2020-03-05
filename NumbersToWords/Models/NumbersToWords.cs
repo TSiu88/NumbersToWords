@@ -14,6 +14,7 @@ namespace NumbersToWords.Models
     public Dictionary<string, string> Teen { get; set; }
     public string Number { get; set; }
     public string Result { get; set; }
+    public virtual int NumberOfPlaces { get; set; }
     public NumbersToWords(string number)
     {
       Number = number;
@@ -33,7 +34,7 @@ namespace NumbersToWords.Models
       Second = new Dictionary<string, string>
       {
         {"0", "and"},
-        {"1", "one"}, //Special case
+        {"1", ""}, //Special case
         {"2", "twenty"},
         {"3", "thrirty"},
         {"4", "fourty"},
@@ -69,6 +70,72 @@ namespace NumbersToWords.Models
         {"8", "eighteen"},
         {"9", "nineteen"}
       };
+    }
+    public string getInstance(string startNumber)
+    {
+      int numberLength = startNumber.Length;
+      string placesDigits = startNumber.Substring(0, (numberLength - NumberOfPlaces));
+      int placeLength = placesDigits.Length;
+      // string one = "";
+      // string oneDigit = "";
+      // string two = "";
+      // string twoDigit = "";
+      // string three = "";
+      // string thirdDigit = "";
+
+      // if (placeLength == 3)
+      // {
+      //   one = placesDigits[0].ToString();
+      //   oneDigit = First[one];
+      //   two = placesDigits[1].ToString();
+      //   twoDigit = Second[two];
+      //   three = placesDigits[2].ToString();
+      //   thirdDigit = Third[three];
+      // }
+      // else if (placeLength == 2)
+      // {
+      //   one = placesDigits[0].ToString();
+      //   oneDigit = First[one];
+      //   two = placesDigits[1].ToString();
+      // }
+      // else
+      // {
+      //   one = placesDigits[0].ToString();
+      //   oneDigit = First[one];
+      // }
+
+      bool isTeen = false;
+      string threeDigits = "";
+      for (int i = placeLength - 1; i >= 0; i--)
+      {
+        string word = "";
+        string digit = placesDigits[i].ToString();
+        if (i == 2)
+        {
+          word = Third[digit] + "Hundred";
+        }
+        else if (i == 1)
+        {
+          if (digit == "1")
+          {
+            isTeen = true;
+          }
+          word = Second[digit];
+        }
+        else if (i == 0)
+        {
+          if (isTeen)
+          {
+            word = Teen[digit];
+          }
+          else
+          {
+            word = First[digit];
+          }
+        }
+        threeDigits += (word + " ");
+      }
+      return threeDigits;
     }
   }
 }
