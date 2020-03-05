@@ -10,23 +10,36 @@ namespace NumbersToWords.Models
     }
     public string getInstance(string number)
     {
-      string numberToWords = "";
-      if (number.Length == 12)
+      int numberLength = number.Length;
+      string billionsPlaces = number.Substring(0, (numberLength - 9));
+      int billionsPlacesCount = billionsPlaces.Length;
+      string one = billionsPlaces[0].ToString();
+      string oneDigit = First[one];
+      string two = billionsPlaces[1].ToString();
+      string twoDigit = Second[two];
+      string three = billionsPlaces[2].ToString();
+      string thirdDigit = Third[three];
+
+      if (billionsPlacesCount == 3)
       {
-        NumbersToWordsFactory factory = new NumbersToWordsFactory();
-        INumbersToWords hundred = new Hunderds();
-
+        one = billionsPlaces[0].ToString();
+        oneDigit = First[one];
+        two = billionsPlaces[1].ToString();
+        twoDigit = Second[two];
+        three = billionsPlaces[2].ToString();
+        thirdDigit = Third[three];
       }
-      else if (number.Length == 11)
+      else if (billionsPlacesCount == 2)
       {
-
+        one = billionsPlaces[0].ToString();
+        oneDigit = First[one];
+        two = billionsPlaces[1].ToString();
       }
-      else if (number.Length == 10)
+      else
       {
-
+        one = billionsPlaces[0].ToString();
+        oneDigit = First[one];
       }
-
-      Dictionary<string, string> d = new Dictionary<string, string>();
 
       return number;
     }

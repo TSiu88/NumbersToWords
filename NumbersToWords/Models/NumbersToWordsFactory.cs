@@ -5,35 +5,36 @@ namespace NumbersToWords.Models
 
   public class NumbersToWordsFactory
   {
-    public NumbersToWords CreateInstance(string number)
+    public string CreateInstance(string number)
     {
-      if (number.Length == 13)
+      int numberStringLength = number.Length;
+      if (numberStringLength == 1)
       {
-        return new Trillions(number);
+        return new Ones(number).getInstance(number);
       }
-      else if (number.Length < 13 && number.Length >= 10)
+      else if (numberStringLength == 2)
       {
-        return new Billions(number);
+        return new Tens(number).getInstance(number);
       }
-      else if (number.Length < 10 && number.Length >= 7)
+      else if (numberStringLength == 3)
       {
-        return new Millions(number);
+        return new Hundreds(number).getInstance(number);
       }
-      else if (number.Length < 7 && number.Length >= 4)
+      if (numberStringLength <= 6)
       {
-        return new Thousands(number);
+        return new Thousands(number).getInstance(number);
       }
-      else if (number.Length == 3)
+      else if (numberStringLength <= 9)
       {
-        return new Hundreds(number);
+        return new Millions(number).getInstance(number);
       }
-      else if (number.Length == 2)
+      else if (numberStringLength <= 12)
       {
-        return new Tens(number);
+        return new Billions(number).getInstance(number);
       }
-      else if (number.Length == 1)
+      else if (numberStringLength <= 15)
       {
-        return new Ones(number);
+        return new Trillions(number).getInstance(number);
       }
       else
       {
