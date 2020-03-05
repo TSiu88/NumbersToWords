@@ -1,8 +1,8 @@
-#
+# NumbersToWords
 
 #### NumbersToWords Game 03.05.2020\_
 
-#### By _**Andrew Philpott**_
+#### By _**Tiffany Siu and Andrew Philpott**_
 
 ## Description
 
@@ -34,6 +34,6 @@
 
 ### License
 
-Copyright (c) 2020 **_Andrew Philpott_**
+Copyright (c) 2020 **_Tiffany Siu and Andrew Philpott_**
 
 _This software is licensed under the MIT license._
