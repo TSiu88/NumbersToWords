@@ -1,6 +1,6 @@
 #
 
-#### RockPaperScissors Game 03.05.2020\_
+#### NumbersToWords Game 03.05.2020\_
 
 #### By _**Andrew Philpott**_
 

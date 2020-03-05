@@ -1,10 +1,9 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ProjectName;
 
-namespace ProjectName.Tests
+namespace NumbersToWords.Tests
 {
   [TestClass]
-  public class ClassNameTests
+  public class NumberToWordTests
   {
     // Test methods go here
   }
