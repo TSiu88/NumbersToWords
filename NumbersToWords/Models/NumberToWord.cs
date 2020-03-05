@@ -1,89 +1,138 @@
 using System.Collections.Generic;
+using System;
 
 namespace NumbersToWords.Models
 {
   interface INumbersToWords
   {
-
+    string getInstance(string number);
   }
 
   interface INumbersToWordsFactory
   {
-    NumbersToWords GetNumbersToWords();
+    INumbersToWords GetNumbersToWords();
 
   }
   public class NumbersToWordsFactory
   {
-    public INumbersToWords getInstance(string number)
+    public INumbersToWords CreateInstance(string number)
     {
       if (number.Length == 13)
       {
-        return new Trillions();
+        return new Trillions(number);
       }
       else if (number.Length < 13 && number.Length >= 10)
       {
-        return new Billions();
+        return new Billions(number);
       }
       else if (number.Length < 10 && number.Length >= 7)
       {
-        return new Millions();
+        return new Millions(number);
       }
       else if (number.Length < 7 && number.Length >= 4)
       {
-        return new Thousands();
+        return new Thousands(number);
       }
       else if (number.Length == 3)
       {
-        return new Hunderds();
+        return new Hunderds(number);
       }
       else if (number.Length == 2)
       {
-        return new Tens();
+        return new Tens(number);
       }
       else if (number.Length == 1)
       {
-        return new Ones();
+        return new Ones(number);
+      }
+      else
+      {
+        throw new ArgumentException();
       }
     }
   }
-  Dictionary<int, string> Trillions = new Dictionary<int, string>();
-  Dictionary<int, string> Billions = new Dictionary<int, string>();
-  Dictionary<int, string> Millions = new Dictionary<int, string>();
-  Dictionary<int, string> Thousands = new Dictionary<int, string>();
-  Dictionary<int, string> Hunderds = new Dictionary<int, string>();
-  Dictionary<int, string> Tens = new Dictionary<int, string>();
-  Dictionary<int, string> Ones = new Dictionary<int, string>();
-  public class Ones
+  public abstract class NumbersToWords
   {
-    public Ones(string number)
+    public string Number { get; set; }
+    public NumbersToWords(string number)
+    {
+      Number = number;
+    }
+  }
+  public class Ones : NumbersToWords, INumbersToWords
+  {
+    public Ones(string number) : base(number)
+    {
+    }
+    public string getInstance(string number)
+    {
+      return number;
+    }
+  }
+  public class Tens : NumbersToWords, INumbersToWords
+  {
+    public Tens(string number) : base(number)
     {
 
     }
-
+    public string getInstance(string number)
+    {
+      return number;
+    }
   }
-  public class Tens
+  public class Hunderds : NumbersToWords, INumbersToWords
   {
+    public Hunderds(string number) : base(number)
+    {
 
+    }
+    public string getInstance(string number)
+    {
+      return number;
+    }
   }
-  public class Hunderds
+  public class Thousands : NumbersToWords, INumbersToWords
   {
+    public Thousands(string number) : base(number)
+    {
 
+    }
+    public string getInstance(string number)
+    {
+      return number;
+    }
   }
-  public class Thousands
+  public class Millions : NumbersToWords, INumbersToWords
   {
-
+    public Millions(string number) : base(number)
+    {
+    }
+    public string getInstance(string number)
+    {
+      return number;
+    }
   }
-  public class Millions
+  public class Billions : NumbersToWords, INumbersToWords
   {
+    public Billions(string number) : base(number)
+    {
 
+    }
+    public string getInstance(string number)
+    {
+      return number;
+    }
   }
-  public class Billions
+  public class Trillions : NumbersToWords, INumbersToWords
   {
+    public Trillions(string number) : base(number)
+    {
 
-  }
-  public class Trillions
-  {
-
+    }
+    public string getInstance(string number)
+    {
+      return number;
+    }
   }
   public class NumberToWord
   {
