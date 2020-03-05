@@ -28,10 +28,20 @@
   - Input: "60"
   - Output: "Sixty"
 
-- _Spec: If the user enters a number with 3 digits it should return a number as words with hundred at the _
+- _Spec: If the user enters any multiples of 100 the final 2 words of the string will be 1-9(converted to word equivalent) hundred._
+
+  - Input: "900"
+  - Output: "Nine hundred"
+
+- _Spec: For every three places in a number the first digit number will be it's word equivalent followed by hundred. If the second digit is 2 or greater, the words following after hundred will be number as word + "ty" format. The third digit will be it's word equivalent._
 
   - Input: "526"
-  - Output: "Eight"
+  - Output: "Five hundred twenty six"
+
+- _Spec: For every three places in a number the first digit number will be it's word equivalent followed by hundred. If the second digit is 2 or greater, the words following after hundred will be number as word + "ty" format. The third digit will be it's word equivalent._
+
+  - Input: "526"
+  - Output: "Five hundred twenty six"
 
 ## Setup/Installation Requirements
 

@@ -33,7 +33,7 @@ namespace NumbersToWords.Models
       };
       Second = new Dictionary<string, string>
       {
-        {"0", "and"},
+        {"0", ""},
         {"1", ""}, //Special case
         {"2", "twenty"},
         {"3", "thrirty"},
@@ -105,11 +105,12 @@ namespace NumbersToWords.Models
       // }
 
       bool isTeen = false;
+      bool zeroTens = false;
       string threeDigits = "";
       for (int i = placeLength - 1; i >= 0; i--)
       {
         string word = "";
-        string digit = placesDigits[i].ToString();
+        string digit = placesDigits[i - placeLength + 1].ToString();
         if (i == 2)
         {
           word = Third[digit] + "Hundred";
@@ -120,6 +121,10 @@ namespace NumbersToWords.Models
           {
             isTeen = true;
           }
+          else if (digit == "0")
+          {
+            zeroTens = true;
+          }
           word = Second[digit];
         }
         else if (i == 0)
@@ -127,6 +132,10 @@ namespace NumbersToWords.Models
           if (isTeen)
           {
             word = Teen[digit];
+          }
+          else if (zeroTens && digit != 0)
+          {
+            word = ("and" + First[digit]);
           }
           else
           {
