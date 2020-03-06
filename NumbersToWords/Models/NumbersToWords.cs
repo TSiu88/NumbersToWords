@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System;
 
 namespace NumbersToWords.Models
 {
@@ -90,10 +91,14 @@ namespace NumbersToWords.Models
       bool isTeen = false;
       bool zeroTens = false;
       string threeDigits = "";
+      int digitIndex = 0;
       for (int i = placeLength - 1; i >= 0; i--)
       {
+
         string word = "";
-        string digit = placesDigits[i - placeLength + 1].ToString();
+        string digit = placesDigits[digitIndex].ToString();
+        Console.WriteLine(digit);
+        //if
         if (i == 2)
         {
           word = Third[digit] + "Hundred";
@@ -125,7 +130,10 @@ namespace NumbersToWords.Models
             word = First[digit];
           }
         }
+        Console.WriteLine(word);
+        digitIndex++;
         threeDigits += (word + " ");
+        Console.WriteLine(threeDigits);
       }
       numbersToWords += threeDigits;
       toBeSliced = numbersToWords.Substring(placeLength - 1, toBeSliced.Length);
