@@ -37,7 +37,7 @@ namespace NumbersToWords.Models
         {"0", ""},
         {"1", ""}, //Special case
         {"2", "twenty"},
-        {"3", "thrirty"},
+        {"3", "thirty"},
         {"4", "fourty"},
         {"5", "fifty"},
         {"6", "sixty"},
@@ -80,12 +80,23 @@ namespace NumbersToWords.Models
       //we need to pass the new string into the next recursive call as 204 so we need to take off the first 3 characters of the string
       string toBeSliced = startNumber;
       int remainingPlaces = startNumber.Length;
+      Console.WriteLine(remainingPlaces + " remaining places");
       string numbersToWords = words;
-      if (remainingPlaces == 0)
+      string placesDigits;
+      if (remainingPlaces > 3 && remainingPlaces % 3 != 0)
       {
-        return numbersToWords;
+        placesDigits = toBeSliced.Substring(0, (remainingPlaces - NumberOfPlaces));
       }
-      string placesDigits = startNumber.Substring(0, (remainingPlaces - NumberOfPlaces));
+      else if (remainingPlaces > 3 && remainingPlaces % 3 == 0)
+      {
+        placesDigits = toBeSliced.Substring(0, 3);
+      }
+      else
+      {
+        placesDigits = toBeSliced;
+      }
+      Console.WriteLine(remainingPlaces + " remaining places");
+      Console.WriteLine(placesDigits + " place digits ");
       int placeLength = placesDigits.Length;
 
       bool isTeen = false;
@@ -94,14 +105,14 @@ namespace NumbersToWords.Models
       int digitIndex = 0;
       for (int i = placeLength - 1; i >= 0; i--)
       {
-
+        Console.WriteLine("start loop", placesDigits);
         string word = "";
         string digit = placesDigits[digitIndex].ToString();
         Console.WriteLine(digit);
-        //if
+        Console.WriteLine(NumberOfPlaces + " number of places");
         if (i == 2)
         {
-          word = Third[digit] + "Hundred";
+          word = Third[digit] + " hundred";
         }
         else if (i == 1)
         {
@@ -136,8 +147,43 @@ namespace NumbersToWords.Models
         Console.WriteLine(threeDigits);
       }
       numbersToWords += threeDigits;
-      toBeSliced = numbersToWords.Substring(placeLength - 1, toBeSliced.Length);
-      return getInstance(toBeSliced, numbersToWords);
+
+      //if start number is equal to 3 then return numberstowords
+      Console.WriteLine(toBeSliced + " to be sliced before if");
+
+      if (remainingPlaces <= 3)
+      {
+        return numbersToWords;
+      }
+      else
+      {
+        string sliced = toBeSliced.Substring(placeLength);
+        Console.WriteLine(sliced + " sliced");
+        return getInstance(sliced, numbersToWords);
+      }
+
+
+      // if (toBeSliced.Length <= 3)
+      // {
+      //   return numbersToWords;
+      // }
+      // else
+      // {
+      //   toBeSliced = toBeSliced.Substring(placeLength);
+      //   return getInstance(toBeSliced, numbersToWords);
+      // }
+
+      // Console.WriteLine(toBeSliced + "tobesliced");
+      // Console.WriteLine(toBeSliced.Length + " to be sliced length");
+      // if (toBeSliced.Length <= 3 || toBeSliced == null)
+      // {
+      //   return numbersToWords;
+      // }
+      // else
+      // {
+      //   return getInstance(toBeSliced, numbersToWords);
+      // }
+      //return getInstance(toBeSliced, numbersToWords);
     }
   }
 }
