@@ -2,39 +2,46 @@ using System;
 
 namespace NumbersToWords.Models
 {
-
   public class NumbersToWordsFactory
   {
     public string CreateInstance(string number)
     {
       int numberStringLength = number.Length;
+      string words = "";
       if (numberStringLength == 1)
       {
-        return new Ones(number).getInstance(number);
+        Ones ones = new Ones(number);
+        return ones.getInstance(number, words);
       }
       else if (numberStringLength == 2)
       {
-        return new Tens(number).getInstance(number);
+        Tens tens = new Tens(number);
+        return tens.getInstance(number, words);
       }
       else if (numberStringLength == 3)
       {
-        return new Hundreds(number).getInstance(number);
+        Hundreds hundreds = new Hundreds(number);
+        return hundreds.getInstance(number, words);
       }
       if (numberStringLength <= 6)
       {
-        return new Thousands(number).getInstance(number);
+        Thousands thousands = new Thousands(number);
+        return thousands.getInstance(number, words);
       }
       else if (numberStringLength <= 9)
       {
-        return new Millions(number).getInstance(number);
+        Millions millions = new Millions(number);
+        return millions.getInstance(number, words);
       }
       else if (numberStringLength <= 12)
       {
-        return new Billions(number).getInstance(number);
+        Billions billions = new Billions(number);
+        return billions.getInstance(number, words);
       }
       else if (numberStringLength <= 15)
       {
-        return new Trillions(number).getInstance(number);
+        Trillions trillions = new Trillions(number);
+        return trillions.getInstance(number, words);
       }
       else
       {

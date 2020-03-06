@@ -4,7 +4,7 @@ namespace NumbersToWords.Models
 {
   interface INumbersToWords
   {
-    string getInstance(string number);
+    string getInstance(string number, string words);
   }
   public abstract class NumbersToWords
   {
@@ -71,38 +71,21 @@ namespace NumbersToWords.Models
         {"9", "nineteen"}
       };
     }
-    public string getInstance(string startNumber)
+    public string getInstance(string startNumber, string words)
     {
-      int numberLength = startNumber.Length;
-      string placesDigits = startNumber.Substring(0, (numberLength - NumberOfPlaces));
+      //the start number should always be at 0. The length of the string should decrease in size with each pass of getInstance. The numbers to words from each
+      //543,204
+      //after first getInstance call, start number = to 543,204 should be 204.
+      //we need to pass the new string into the next recursive call as 204 so we need to take off the first 3 characters of the string
+      string toBeSliced = startNumber;
+      int remainingPlaces = startNumber.Length;
+      string numbersToWords = words;
+      if (remainingPlaces == 0)
+      {
+        return numbersToWords;
+      }
+      string placesDigits = startNumber.Substring(0, (remainingPlaces - NumberOfPlaces));
       int placeLength = placesDigits.Length;
-      // string one = "";
-      // string oneDigit = "";
-      // string two = "";
-      // string twoDigit = "";
-      // string three = "";
-      // string thirdDigit = "";
-
-      // if (placeLength == 3)
-      // {
-      //   one = placesDigits[0].ToString();
-      //   oneDigit = First[one];
-      //   two = placesDigits[1].ToString();
-      //   twoDigit = Second[two];
-      //   three = placesDigits[2].ToString();
-      //   thirdDigit = Third[three];
-      // }
-      // else if (placeLength == 2)
-      // {
-      //   one = placesDigits[0].ToString();
-      //   oneDigit = First[one];
-      //   two = placesDigits[1].ToString();
-      // }
-      // else
-      // {
-      //   one = placesDigits[0].ToString();
-      //   oneDigit = First[one];
-      // }
 
       bool isTeen = false;
       bool zeroTens = false;
@@ -133,7 +116,7 @@ namespace NumbersToWords.Models
           {
             word = Teen[digit];
           }
-          else if (zeroTens && digit != 0)
+          else if (zeroTens && digit != "0")
           {
             word = ("and" + First[digit]);
           }
@@ -144,7 +127,9 @@ namespace NumbersToWords.Models
         }
         threeDigits += (word + " ");
       }
-      return threeDigits;
+      numbersToWords += threeDigits;
+      toBeSliced = numbersToWords.Substring(placeLength - 1, toBeSliced.Length);
+      return getInstance(toBeSliced, numbersToWords);
     }
   }
 }

@@ -33,15 +33,25 @@
   - Input: "900"
   - Output: "Nine hundred"
 
+- _Spec: If the second place in a three places division is a zero and the third place isn't 0 the number words will follow the format first place number word followed by hundred followed by "and" followed by the third place word equivalent_
+
+  - Input: "901"
+  - Output: "Nine hundred and one"
+
 - _Spec: For every three places in a number the first digit number will be it's word equivalent followed by hundred. If the second digit is 2 or greater, the words following after hundred will be number as word + "ty" format. The third digit will be it's word equivalent._
 
   - Input: "526"
   - Output: "Five hundred twenty six"
 
-- _Spec: For every three places in a number the first digit number will be it's word equivalent followed by hundred. If the second digit is 2 or greater, the words following after hundred will be number as word + "ty" format. The third digit will be it's word equivalent._
+- _Spec: For every three places in a number the first digit number will be it's word equivalent followed by hundred. If the second digit is 1 and the third digit is 3 or more, the words following after hundred will be dicated by the third digit plus "teen"._
 
-  - Input: "526"
-  - Output: "Five hundred twenty six"
+  - Input: "516"
+  - Output: "Five hundred sixteen"
+
+- _Spec: For every three places in a number starting after the fourth digit from the right, the digit number will also add its group name (thousand, million, billion, trillion)._
+
+  - Input: "123456516"
+  - Output: "One hundred twenty three million four hundred fifty six thousand five hundred sixteen"
 
 ## Setup/Installation Requirements
 
@@ -55,7 +65,7 @@
 
 ## Support and contact details
 
-- Issues or concerns? Contact us at andrewphilpott92@gmail.com
+- Issues or concerns? Contact us at andrewphilpott92@gmail.com or tsiu88@gmail.com
 
 ## Technologies Used
 
