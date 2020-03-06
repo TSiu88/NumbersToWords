@@ -4,10 +4,6 @@
 
 #### By _**Tiffany Siu and Andrew Philpott**_
 
-## Descripiton
-
-An Epicodus project for
-
 ## Summary
 
 Tried our hands at the factory pattern and using abstract classes with interfaces and recursion. The project could have been done a number of different ways that we're more familiar with, but decided to struggle through and try to learn new concepts.
