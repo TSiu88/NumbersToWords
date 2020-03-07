@@ -4,7 +4,9 @@
 
 #### By _**Tiffany Siu and Andrew Philpott**_
 
-## Description
+## Summary
+
+Tried our hands at the factory pattern and using abstract classes with interfaces and recursion. The project could have been done a number of different ways that we're more familiar with, but decided to struggle through and try to learn new concepts.
 
 ## Specs
 
@@ -61,7 +63,7 @@
 
 ## Known Bugs
 
-- No known bugs
+- The recursive loop for different digits in not getting the correct input at the moment and program crashes
 
 ## Support and contact details
 

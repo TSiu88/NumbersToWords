@@ -4,7 +4,7 @@ namespace NumbersToWords.Models
   {
     public Tens(string number) : base(number)
     {
-      NumberOfPlaces = 1;
+      NumberOfPlaces = 0;
     }
   }
 }

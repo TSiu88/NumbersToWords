@@ -6,5 +6,12 @@ namespace NumbersToWords.Models
     {
       NumberOfPlaces = 12;
     }
+
+    // public string GetNumbers()
+    // {
+
+    //   Billions b = new Billions();
+    //   b.getInstance(this.)
+    // }
   }
 }

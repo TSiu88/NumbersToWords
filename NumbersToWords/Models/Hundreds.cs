@@ -4,6 +4,7 @@ namespace NumbersToWords.Models
   {
     public Hundreds(string number) : base(number)
     {
+      NumberOfPlaces = 0;
     }
   }
 }
